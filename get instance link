@@ -1,0 +1,18 @@
+
+#nullable disable
+namespace VRChat;
+
+public static class LinkGenerator
+{
+  public static string GetLaunchInstanceLink(Instance i)
+  {
+    return $"vrchat://launch?id={i.Id}&shortName=dummyval";
+  }
+
+  public static string GetInstanceLink(Instance i)
+  {
+    return $"https://vrchat.com/home/launch?worldId={i.WorldId}{(i.IdWithoutWorldId == "" ? (object) "" : (object) "&instanceId=")}{i.IdWithoutWorldId}";
+  }
+
+  public static string GetUserIdLink(Instance i) => $"https://vrchat.com/home/user/{i.OwnerId}";
+}
