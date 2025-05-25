@@ -1,0 +1,26 @@
+
+using System.Windows.Forms;
+
+#nullable disable
+namespace VRChat;
+
+internal static class SaveInstanceUtility
+{
+  internal static void SaveInstanceToShortcutGui(Instance i, bool httpLink = false)
+  {
+    SaveFileDialog saveFileDialog = new SaveFileDialog();
+    string str1 = i.WorldId;
+    string idWithoutWorldId = i.IdWithoutWorldId;
+    if (httpLink)
+      str1 = "web-" + str1;
+    if (idWithoutWorldId != "")
+      str1 = str1 + "-" + idWithoutWorldId;
+    string str2 = str1 + ".lnk";
+    saveFileDialog.FileName = str2;
+    saveFileDialog.Filter = "Link (*.lnk)|*.lnk|All files (*.*)|*.*";
+    saveFileDialog.Title = "Save Instance";
+    if (saveFileDialog.ShowDialog() != DialogResult.OK)
+      return;
+    VRChat.SaveInstanceToShortcut(i, saveFileDialog.FileName, httpLink);
+  }
+}
