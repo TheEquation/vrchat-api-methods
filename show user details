@@ -1,8 +1,7 @@
 using System.Diagnostics;
 
 #nullable disable
-namespace VRChatRejoinTool.Utility;
-
+namespace vrchat;
 public static class ShellUtility
 {
   internal static void ShowDetail(Instance i)
