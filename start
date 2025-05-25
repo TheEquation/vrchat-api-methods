@@ -1,0 +1,26 @@
+using System.Diagnostics;
+
+#nullable disable
+namespace vrchat;
+
+public static class ShellUtility
+{
+  internal static void ShowDetail(Instance i)
+  {
+    ShellUtility.start(LinkGenerator.GetInstanceLink(i));
+  }
+
+  internal static void ShowUserDetail(Instance i)
+  {
+    ShellUtility.start(LinkGenerator.GetUserIdLink(i));
+  }
+
+  private static void start(string path)
+  {
+    Process.Start(new ProcessStartInfo()
+    {
+      FileName = path,
+      UseShellExecute = true
+    });
+  }
+}
